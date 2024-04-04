@@ -9,9 +9,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * La clase ControllerCreateVertice controla la lógica para crear un vértice.
+ * Implementa ActionListener para manejar los eventos de los botones.
+ */
 public class ControllerCreateVertice implements ActionListener {
-    private CreateVerticeView view;
-    private Graph graph;
+    private final CreateVerticeView view; // La vista para crear un vértice
+    private final Graph graph; // El gráfico al que se añadirá el vértice
+
+    /**
+     * Constructor para la clase ControllerCreateVertice.
+     * @param view La vista para crear un vértice.
+     * @param graph El gráfico al que se añadirá el vértice.
+     */
     public ControllerCreateVertice(CreateVerticeView view, Graph graph){
         this.view = view;
         this.graph = graph;
@@ -20,6 +30,10 @@ public class ControllerCreateVertice implements ActionListener {
         refreshTable();
     }
 
+    /**
+     * Maneja los eventos de los botones.
+     * @param actionEvent El evento de acción.
+     */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == view.createVerticeBtn) {
@@ -39,9 +53,16 @@ public class ControllerCreateVertice implements ActionListener {
         }
     }
 
+    /**
+     * Limpia los campos de texto de la vista.
+     */
     public void cleanTxtFields(){
         view.verticeLabeltxt.setText("");
     }
+
+    /**
+     * Actualiza la tabla de la vista con los vértices del gráfico.
+     */
     public void refreshTable(){
         view.reloadTable();
         for (Vertice vertice : graph.getVertices()) {
@@ -49,6 +70,3 @@ public class ControllerCreateVertice implements ActionListener {
         }
     }
 }
-
-
-
